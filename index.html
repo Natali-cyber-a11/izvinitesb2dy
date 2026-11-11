@@ -1,33 +1,54 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<b><title>Для обижулек</title><b>
+
+<title>Для обижулек</title>
+
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     background: #121212;
     color: #ff3b3b;
-    font-family: 'Cormorant Garamond'
+    font-family: 'Cormorant Garamond', serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100svh;
     margin: 0;
     text-align: center;
     padding: 20px;
   }
+
   .container {
+    width: 100%;
     max-width: 600px;
   }
+
   h1 {
     font-size: 2.8rem;
     margin-bottom: 20px;
   }
+
   p {
     font-size: 1.5rem;
     margin-bottom: 30px;
   }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   a, button {
     color: #ff3b3b;
     background: transparent;
@@ -37,16 +58,21 @@
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
-    margin: 0 10px 10px 0;
+    margin: 0;
     transition: background 0.3s, color 0.3s;
+    text-decoration: none;
+    font-family: inherit;
   }
+
   a:hover, button:hover {
     background: #ff3b3b;
     color: #121212;
   }
+
   #popup {
     position: fixed;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     background: #121212;
     color: #ff3b3b;
@@ -58,14 +84,21 @@
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
+    width: max-content;
+    max-width: calc(100% - 40px);
   }
+
   #overlay {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(18,18,18,0.85);
     display: none;
     z-index: 999;
   }
+
   #closeBtn {
     margin-top: 15px;
     background: #ff3b3b;
@@ -78,27 +111,73 @@
     font-size: 1rem;
     transition: background 0.3s, color 0.3s;
   }
+
   #closeBtn:hover {
     background: #ff0000;
   }
+
+  /* МОБИЛЬНАЯ ВЕРСИЯ */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+    }
+
+    .actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .actions a,
+    .actions button {
+      width: 100%;
+    }
+
+    #popup {
+      padding: 1.5em;
+      font-size: 1.25rem;
+    }
+  }
 </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Все обиженные мной идут нахуй</h1>
-   <br> <p>Или к психологу — выбор за вами</p><br>
 
-    
-  <a href="https://www.1окспнб74.рф" target="_blank" rel="noopener noreferrer">Найти психиатра</a><br>
-    <button onclick="showPopup()">Пожаловаться</button>
+<body>
+
+  <div class="container">
+
+    <h1>Все обиженные мной идут нахуй</h1>
+
+    <p>Или к психологу — выбор за вами</p>
+
+    <div class="actions">
+
+      <a href="https://www.1окспнб74.рф"
+         target="_blank"
+         rel="noopener noreferrer">
+        Найти психиатра
+      </a>
+
+      <button onclick="showPopup()">
+        Пожаловаться
+      </button>
+
+    </div>
+
   </div>
-<br>
+
   <div id="overlay"></div>
+
   <div id="popup">
-   <i> Ты еще поплачь, зай ❤️</i>
+    <i>Ты еще поплачь, зай ❤️</i>
 
     <br />
-    <button id="closeBtn" onclick="closePopup()">Закрыть</button>
+
+    <button id="closeBtn" onclick="closePopup()">
+      Закрыть
+    </button>
   </div>
 
 <script>
@@ -106,10 +185,12 @@
     document.getElementById('popup').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
   }
+
   function closePopup() {
     document.getElementById('popup').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';
   }
 </script>
+
 </body>
 </html>
